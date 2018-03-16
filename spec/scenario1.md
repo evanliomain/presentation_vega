@@ -33,6 +33,45 @@ Question : Quelle est la répartition des stations suivant leur trafic ?
   * y = yScale(y0)
 * Ajouter un petit effet `hover` en changant la couleur du cercle en rouge
 
+# Ajouter de la couleur
+* Ajouter une scale ordinal de couleur `category20c`
+* colorier les cercles avec la scale par paquet (`bin0`)
+
+# Ajouter de la gravité
+* Supprimer y
+* xfocus et yfocus
+  * Transformer x en xfocus (mettre une band à 0.5)
+  * Ajouter un yfocus à height / 2
+  * Passer xfocus et yfocus en enter
+* La gravité
+  * ajouter une `transform` de `force`
+  * iterations : 300
+  * static : true (mais pas obligé)
+  * forces :
+    * force : collide, 1 iterations, radius : 3
+    * force : x,
+      * x : xfocus
+      * strength : 0.9
+    * force : Y,
+      * y : yfocus
+      * strength : 0.04
+* Ajouter un peu d'espace entre les cercle
+  * size : pow(2 * 3, 2)
+  * stroke : white
+  * strokeWidth : 0.2
+
+          "size": {
+            "signal": "pow(2 * 3, 2)"
+          },
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 0.2
+          }
+
+
+
 # Créer un Wordcloud
 * Désactiver l'option autoparse car l'algo wordcloud est gourmand
 * Supprimer les `transform`, `scales`, `axes` et `marks`
