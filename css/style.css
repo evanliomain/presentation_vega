@@ -1,0 +1,13 @@
+
+@font-face {
+  font-family: 'Sega';
+  src: url('../assets/font/SEGA.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.reveal h1, .reveal h2 {
+  font-family: Sega;
+  font-weight: normal;
+}
