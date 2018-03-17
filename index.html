@@ -64,57 +64,93 @@
 				<section>
 					<section>
 						<h2>Data</h2>
-						<p class="fragment">inline</p>
-						<p class="fragment">url (json, csv, tsv, dsv, topoJSON)</p>
-						<p class="fragment">programmatically</p>
+						<p>inline</p>
+						<p>url (json, csv, tsv, dsv, topoJSON)</p>
+						<p>programmatically</p>
+					</section>
+					<section>
+						<h2>Transform</h2>
+						<p>Functions to transform data to compute graphical representation</p>
+						<ul>
+							<li>Basic (sorting, filtering, packing, custom)</li>
+							<li>Geographic</li>
+							<li>Layout (pie, stack, force, voronoi, world cloud)</li>
+							<li>Hierarchy (tree, treemap, partition)</li>
+							<li>Cross filtering</li>
+						</ul>
 					</section>
 					<section>
 						<h2>Scales</h2>
 						<p>Bijective functions</p>
 						<p>Use to map data with visual values</p>
-						<p class="fragment">
-							<span>Quantitative</span>
-							<ul>
-								<li>linear</li>
-								<li>pow</li>
-								<li>sqrt</li>
-								<li>log</li>
-							</ul>
-						</p>
+						<ul>
+							<li><a href="https://vega.github.io/vega/docs/scales/#quantitative">Quantitative</a> (linear, pow, sqrt, log)</li>
+							<li><a href="https://vega.github.io/vega/docs/scales/#discrete">Discrete</a> (ordinal, band, point)</li>
+							<li><a href="https://vega.github.io/vega/docs/scales/#discretizing">Discretizing</a> (quantile, quantize, threshold)</li>
+						</ul>
 					</section>
 					<section>
 						<h2>Marks</h2>
+						<p>What you draw</p>
+						<p>All is path. Is basically svg markup</p>
+						<ul>
+							<li>rect</li>
+							<li>symbol</li>
+							<li>line/trail</li>
+							<li>arc/area</li>
+							<li>path</li>
+							<li>text</li>
+							<li>shape (for maps)</li>
+							<li>area</li>
+							<li>image</li>
+						</ul>
 					</section>
 					<section>
-						<h2>Axes</h2>
+						<h2>Chart elements</h2>
+						<ul>
+							<li>Axes</li>
+							<li>Legends</li>
+						</ul>
 					</section>
 					<section>
 						<h2>Signals</h2>
+						<p>It's variables you can use anywhere</p>
+						<ul>
+							<li>Predefine signals: width / height</li>
+							<li>Expression evaluation</li>
+							<li>Event handling</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Demo</h2>
+				</section>
+
+				<section>
+					<section>
+						<h2>Pro / Const</h2>
 					</section>
 					<section>
-						<h2>Transform</h2>
+						<h3>Pro</h3>
+						<p class="fragment">+ All in one structured file</p>
+						<p class="fragment">+ Online live editor</p>
+						<p class="fragment">+ Nearly no dataviz limit</p>
+						<p class="fragment">+ Good documentation</p>
+						<p class="fragment">+ Active development</p>
 					</section>
-				</section>
 
-				<section>
-					<h2>Pro</h2>
-					<p class="fragment">+ All in one structured file</p>
-					<p class="fragment">+ Online live editor</p>
-					<p class="fragment">+ Nearly no dataviz limit</p>
-					<p class="fragment">+ Good documentation</p>
-					<p class="fragment">+ Active development</p>
-				</section>
+					<section>
+						<h3>Const</h3>
+						<p class="fragment">- spec in json</p>
+						<p class="fragment">- No reusable code across spec</p>
+						<p class="fragment">- No predefined design</p>
+						<p class="fragment">- Transform function naming not straightforward <br>(collect to sort)</p>
+						<p class="fragment">- Uncomplete autocompletion of online editor</p>
+						<p class="fragment">- Uncomplete documentation (custom styling, unknown properties)</p>
+						<p class="fragment">- hard to size with css (responsive)</p>
 
-				<section>
-					<h2>Const</h2>
-					<p class="fragment">- spec in json</p>
-					<p class="fragment">- No reusable code across spec</p>
-					<p class="fragment">- No predefined design</p>
-					<p class="fragment">- Transform function naming not straightforward <br>(collect to sort)</p>
-					<p class="fragment">- Uncomplete autocompletion of online editor</p>
-					<p class="fragment">- Uncomplete documentation (custom styling, unknown properties)</p>
-					<p class="fragment">- hard to size with css (responsive)</p>
-
+					</section>
 				</section>
 
 				<section>
@@ -125,6 +161,10 @@
 					<p><a href="http://colorbrewer2.org">Color brewer</a></p>
 					<p><a href="http://datavizproject.com">Dataviz ideas</a></p>
 
+				</section>
+
+				<section>
+					<h2>Questions</h2>
 				</section>
 			</div>
 
