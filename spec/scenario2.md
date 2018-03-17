@@ -6,7 +6,7 @@
   * http://data.un.org/Data.aspx?d=ENV&f=variableID%3a1878
 
 # Créer un multi-line chart
-Question : Quelle est la répartition des stations suivant leur trafic ?
+Question : Quelle est l'évolution de la collecte de déchets par le monde ?
 
 * Créer une coquille de spec vega
 * Ajouter les données `source`
