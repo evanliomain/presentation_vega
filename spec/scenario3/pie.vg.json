@@ -1,0 +1,88 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json",
+  "width": 700,
+  "height": 500,
+  "autosize": {
+    "type": "fit",
+    "resize": true,
+    "contains": "padding"
+  },
+  "data": [
+    {
+      "name": "source",
+      "url": "https://raw.githubusercontent.com/evanliomain/presentation_vega/master/data/stationnement-voie-publique-emplacements.csv",
+      "format": {
+        "type": "dsv",
+        "delimiter": ";",
+        "parse": {
+          "Largeur":"number",
+          "Longueur":"number",
+          "Nbre_de_places":"number"
+        }
+      }
+    },
+    {
+      "name": "table",
+      "source": "source",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.Largeur * datum.Longueur",
+          "as": "Surface"
+        },
+        {
+          "type": "aggregate",
+          "groupby": [
+            "Regime_particulier"
+          ],
+          "fields":["Nbre_de_places", "Surface", "OBJECTID"],
+          "ops":["sum", "sum", "count"],
+          "as":["Nbre_de_places", "Surface", "nb"]
+        }
+      ]
+    },
+    {
+      "name": "pie",
+      "source": "table",
+      "transform": [
+        {
+          "type": "pie",
+          "field": "Surface",
+          "sort": true
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "colorScale",
+      "type": "ordinal",
+      "range": {"scheme": "category20"}
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "arc",
+      "from": {"data": "pie"},
+      "encode": {
+        "enter": {
+          "fill": {"scale": "colorScale", "field": "Regime_particulier"},
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"}
+        },
+        "update": {
+          "startAngle": {"field": "startAngle"},
+          "endAngle": {"field": "endAngle"},
+          "outerRadius": {"signal": "width / 3"}
+        }
+      }
+    }
+  ],
+
+  "legends": [
+    {
+      "fill": "colorScale"
+    }
+  ]
+}

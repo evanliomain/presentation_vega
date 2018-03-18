@@ -1,0 +1,108 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json",
+  "width": 700,
+  "height": 500,
+  "autosize": {
+    "type": "fit",
+    "resize": true,
+    "contains": "padding"
+  },
+  "data": [
+    {
+      "name": "source",
+      "url": "https://raw.githubusercontent.com/evanliomain/presentation_vega/master/data/stationnement-voie-publique-emplacements.csv",
+      "format": {
+        "type": "dsv",
+        "delimiter": ";",
+        "parse": {
+          "Largeur": "number",
+          "Longueur": "number",
+          "Nbre_de_places": "number"
+        }
+      }
+    },
+    {
+      "name": "table",
+      "source": "source",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.Largeur * datum.Longueur",
+          "as": "Surface"
+        },
+        {
+          "type": "aggregate",
+          "groupby": [
+            "Regime_particulier"
+          ],
+          "fields": [
+            "Nbre_de_places",
+            "Surface"
+          ],
+          "ops": [
+            "sum",
+            "sum"
+          ],
+          "as": [
+            "Nbre_de_places",
+            "Surface"
+          ]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.Nbre_de_places !== 0"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "colorScale",
+      "type": "ordinal",
+      "range": {
+        "scheme": "category20"
+      }
+    },
+    {
+      "name": "xScale",
+      "type": "log",
+      "domain": { "data": "table", "field": "Surface" },
+      "range": "width"
+    },
+    {
+      "name": "yScale",
+      "type": "log",
+      "domain": { "data": "table", "field": "Nbre_de_places" },
+      "range": "height"
+    }
+  ],
+  "marks": [
+    {
+      "type": "symbol",
+      "from": {
+        "data": "table"
+      },
+      "encode": {
+        "update":{
+          "fill": {"scale": "colorScale", "field": "Regime_particulier"},
+          "x":{"scale":"xScale", "field":"Surface"},
+          "y":{"scale":"yScale", "field":"Nbre_de_places"}
+        }
+      }
+    }
+  ],
+  "axes": [
+    {
+      "scale": "xScale",
+      "orient": "bottom",
+      "title": "Surface",
+      "grid": true
+    },
+    {
+      "scale": "yScale",
+      "orient": "left",
+      "title": "Nombre de place",
+      "grid": true
+    }
+  ]
+}
